@@ -1,6 +1,6 @@
 /******************************************************************
-  This file is a part of ECO: R Package for Estimating Fitting Bayesian 
-  Models of Ecological Inference for 2X2 tables
+  This file is a part of eco: R Package for Estimating Fitting 
+  Bayesian Models of Ecological Inference for 2X2 tables
   by Ying Lu and Kosuke Imai
   Copyright: GPL version 2 or later.
 *******************************************************************/
@@ -14,30 +14,27 @@
 #include "vector.h"
 #include "subroutines.h"
 #include "rand.h"
-
+#include "sample.h"
 
 /* Multivariate Normal density */
 double dMVN(			
 	double *Y,		/* The data */
 	double *MEAN,		/* The parameters */
-	double **SIGMA,         /* covariance matrix */	
+	double **SIG_INV,         /* inverse of the covariance matrix */	
 	int dim,                /* dimension */
 	int give_log){          /* 1 if log_scale 0 otherwise */
   
   int j,k;
   double value=0.0;
-  double **SIG_INV = doubleMatrix(dim, dim);
-  
-  dinv(SIGMA, dim, SIG_INV);
+
   for(j=0;j<dim;j++){
     for(k=0;k<j;k++)
       value+=2*(Y[k]-MEAN[k])*(Y[j]-MEAN[j])*SIG_INV[j][k];
     value+=(Y[j]-MEAN[j])*(Y[j]-MEAN[j])*SIG_INV[j][j];
   }
 
-  value=-0.5*value-0.5*dim*log(2*M_PI)-0.5*ddet(SIGMA, dim, 1);
+  value=-0.5*value-0.5*dim*log(2*M_PI)+0.5*ddet(SIG_INV, dim, 1);
 
-  FreeMatrix(SIG_INV, dim);
 
   if(give_log)  
     return(value);
@@ -217,3 +214,19 @@ void rWish(
   FreeMatrix(mtemp, size);
 }
 
+/* Sample from a Dirichlet distribution */
+void rDirich(
+	     double *Sample, /* Vector for the sample */
+	     double *theta,  /* parameters */
+	     int size)       /* The dimension */
+{
+  int j;
+  double dtemp=0;
+  
+  for (j=0; j<size; j++) {
+    Sample[j] = rgamma(theta[j], 1.0);
+    dtemp += Sample[j];
+  }
+  for (j=0 ; j<size; j++)
+    Sample[j] /= dtemp;
+}
