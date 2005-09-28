@@ -11,14 +11,16 @@
   2} tables via Markov chain Monte Carlo. It gives the in-sample
   predictions as well as out-of-sample predictions for population
   inference.  The model and algorithm are described in Imai and Lu
-  (2004).
+  (2004). The contextual effect can also be modeled by following the
+  strategy described in Imai and Lu (2005).
 }
 
 \usage{
 ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
-      mu0 = c(0,0), tau0 = 2, nu0 = 4, S0 = diag(10,2), alpha = NULL,
-      a0 = 1, b0 = 0.1, parameter = FALSE, grid = FALSE,
-      n.draws = 5000, burnin = 0, thin = 0, verbose = FALSE)
+      context = FALSE, mu0 = 0, tau0 = 2, nu0 = 4, S0 = 10, 
+      alpha = NULL, a0 = 1, b0 = 0.1, parameter = FALSE, 
+      grid = FALSE, n.draws = 5000, burnin = 0, thin = 0, 
+      verbose = FALSE)
 }
 
 \arguments{
@@ -40,8 +42,16 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
     \code{NULL}, no additional individual-level data are included in the
     model. The default is \code{NULL}.
   }      
-  \item{mu0}{A \eqn{2 \times 1} numeric vector of the prior mean for the
-    mean parameter \eqn{\mu}. The default is \code{c(0,0)}.
+  \item{context}{Logical. If \code{TRUE}, the contextual effect is also
+    modeled. See Imai and Lu (2005) for details. The default is
+    \code{FALSE}. 
+  }
+  \item{mu0}{A scalar or a numeric vector that specifies the prior mean 
+    for the mean parameter \eqn{\mu}. If it is a scalar, then its value
+    will be repeated to yield a vector of the length of \eqn{\mu}, otherwise,
+    it needs to be a vector of same length as \eqn{\mu}.
+    When \code{context=TRUE }, the length of \eqn{\mu} is 3, 
+    otherwise it is 2. The default is \code{0}. 
   } 
   \item{tau0}{A positive integer representing the prior scale
   for the mean parameter \eqn{\mu}. The default is \code{2}.
@@ -49,9 +59,14 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
   \item{nu0}{A positive integer representing the prior degrees of
   freedom of the variance matrix \eqn{\Sigma}. the default is \code{4}.
   } 
-  \item{S0}{A \eqn{2 \times 2} numeric matrix representing a positive
-    definite prior scale matrix for the variance matrix
-    \eqn{\Sigma}. The default is \code{diag(10,2)}.
+  \item{S0}{A postive scalar or a positive definite matrix that specifies 
+  the prior scale matrix for the variance matrix \eqn{\Sigma}. If it is 
+  a scalar, then the prior scale matrix will be a digonal matrix with 
+  the same dimensions as \eqn{\Sigma} and the diagonal elements all take value 
+  of \code{S0}, otherwise \code{S0} needs to have same dimensions as 
+  \eqn{\Sigma}. When \code{context=TRUE}, \eqn{\Sigma} is a 
+  \eqn{3 \times 3} matrix, otherwise, it is \eqn{2 \times 2}. 
+   The default is \code{10}.
   } 
   \item{alpha}{A positive scalar representing a user-specified fixed
     value of the concentration parameter, \eqn{\alpha}. If \code{NULL},
@@ -116,24 +131,40 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
 ## load the registration data
 data(reg)
 
-## NOTE: convergence has not been properly assessed for the following
-## example. See Imai and Lu (2004) for more complete examples.
+## NOTE: We set the number of MCMC draws to be a very small number in
+## the following examples; i.e., convergence has not been properly
+## assessed. See Imai and Lu (2004, 2005) for more complete examples.
 
 ## fit the nonparametric model to give in-sample predictions
 ## store the parameters to make population inference later
-res <- ecoNP(Y ~ X, data = reg, n.draws = 500, param = TRUE, verbose = TRUE) 
+res <- ecoNP(Y ~ X, data = reg, n.draws = 50, param = TRUE, verbose = TRUE) 
 ##summarize the results
 summary(res)
 
 ## obtain out-of-sample prediction
-out <- predict(res, verbose=TRUE)
+out <- predict(res, verbose = TRUE)
 ## summarize the results
 summary(out)
 
 ## density plots of the out-of-sample predictions
 par(mfrow=c(2,1))
-plot(density(out[,1]), main="W1")
-plot(density(out[,2]), main="W2")
+plot(density(out[,1]), main = "W1")
+plot(density(out[,2]), main = "W2")
+
+
+## load the Robinson's census data
+data(census)
+
+## fit the parametric model with contextual effects and N 
+## using the default prior specification
+res1 <- ecoNP(Y ~ X, N = N, context = TRUE, param = TRUE, data = census,
+              n.draws = 25, verbose = TRUE)
+## summarize the results
+summary(res1)
+
+## out-of sample prediction 
+pres1 <- predict(res1)
+summary(pres1)
 }
 
 \value{
@@ -179,7 +210,13 @@ plot(density(out[,2]), main="W2")
   Imai, Kosuke and Ying Lu. (2004) \dQuote{ Parametric and Nonparametric
   Bayesian Models for Ecological Inference in \eqn{2 \times 2}
   Tables.} Proceedings of the American Statistical Association.
-  \url{http://www.princeton.edu/~kimai/research/einonpar.html} }
+\url{http://www.princeton.edu/~kimai/research/einonpar.html}
+
+Imai, Kosuke and Ying Lu. (2005) \dQuote{An Incomplete Data Approach
+  to Ecological Inference.} Working Paper, Princeton University,
+available at
+\url{http://www.princeton.edu/~kimai/research/einonpar.html} 
+}
 
 \seealso{\code{eco}, \code{predict.eco}, \code{summary.ecoNP}}
 \keyword{models}
