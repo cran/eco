@@ -2,7 +2,7 @@
 
 \alias{ecoNP}
 
-\title{Fitting the Nonparametric Bayesian Model of Ecological Inference
+\title{Fitting the Nonparametric Bayesian Models of Ecological Inference
   in 2x2 Tables}  
 
 \description{
@@ -10,9 +10,8 @@
   a Dirichlet process prior) for ecological inference in \eqn{2 \times
   2} tables via Markov chain Monte Carlo. It gives the in-sample
   predictions as well as out-of-sample predictions for population
-  inference.  The model and algorithm are described in Imai and Lu
-  (2004). The contextual effect can also be modeled by following the
-  strategy described in Imai and Lu (2005).
+  inference.  The models and algorithms are described in Imai, Lu and
+  Strauss (2006). 
 }
 
 \usage{
@@ -59,9 +58,9 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
   \item{nu0}{A positive integer representing the prior degrees of
   freedom of the variance matrix \eqn{\Sigma}. the default is \code{4}.
   } 
-  \item{S0}{A postive scalar or a positive definite matrix that specifies 
+  \item{S0}{A positive scalar or a positive definite matrix that specifies 
   the prior scale matrix for the variance matrix \eqn{\Sigma}. If it is 
-  a scalar, then the prior scale matrix will be a digonal matrix with 
+  a scalar, then the prior scale matrix will be a diagonal matrix with 
   the same dimensions as \eqn{\Sigma} and the diagonal elements all take value 
   of \code{S0}, otherwise \code{S0} needs to have same dimensions as 
   \eqn{\Sigma}. When \code{context=TRUE}, \eqn{\Sigma} is a 
@@ -105,25 +104,9 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
     Markov chain; i.e. the number of Gibbs draws between the recorded
     values that are skipped. The default is \code{0}.
   } 
-  \item{verbose}{Logical. If \code{TRUE}, the progress of the gibbs 
+  \item{verbose}{Logical. If \code{TRUE}, the progress of the Gibbs 
    sampler is printed to the screen. The default is \code{FALSE}.
   }
-}
-
-\details{
-  An example of \eqn{2 \times 2} ecological table for racial voting is
-  given below: 
-  \tabular{lccc}{
-    \tab black voters  \tab white voters \tab \cr
-    Voted \tab \eqn{W_{1i}}  \tab \eqn{W_{2i}} \tab \eqn{Y_i} \cr
-    Not voted \tab \eqn{1-W_{1i}}  \tab \eqn{1-W_{2i}} \tab \eqn{1-Y_i}  \cr
-    \tab \eqn{X_i} \tab \eqn{1-X_i} \tab 
-  }
-  where \eqn{Y_i} and \eqn{X_i} represent the observed margins, and
-  \eqn{W_1} and \eqn{W_2} are unknown variables. All variables are
-  proportions and hence bounded between 0 and 1. For each \eqn{i}, the
-  following deterministic relationship holds,
-  \eqn{Y_i=X W_{1i}+(1-X_i)W_{2i}}.
 }
 
 \examples{
@@ -133,7 +116,7 @@ data(reg)
 
 ## NOTE: We set the number of MCMC draws to be a very small number in
 ## the following examples; i.e., convergence has not been properly
-## assessed. See Imai and Lu (2004, 2005) for more complete examples.
+## assessed. See Imai, Lu and Strauss (2006) for more complete examples.
 
 ## fit the nonparametric model to give in-sample predictions
 ## store the parameters to make population inference later
@@ -157,14 +140,14 @@ data(census)
 
 ## fit the parametric model with contextual effects and N 
 ## using the default prior specification
-res1 <- ecoNP(Y ~ X, N = N, context = TRUE, param = TRUE, data = census,
-              n.draws = 25, verbose = TRUE)
+\dontrun{res1 <- ecoNP(Y ~ X, N = N, context = TRUE, param = TRUE, data = census,
+              n.draws = 25, verbose = TRUE)}
 ## summarize the results
-summary(res1)
+\dontrun{summary(res1)}
 
 ## out-of sample prediction 
-pres1 <- predict(res1)
-summary(pres1)
+\dontrun{pres1 <- predict(res1)}
+\dontrun{summary(pres1)}
 }
 
 \value{
@@ -201,22 +184,18 @@ summary(pres1)
 }
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}, \url{http://www.princeton.edu/~kimai};
-  Ying Lu, Institute for Quantitative Social Sciences, 
-  Harvard University \email{ylu@Latte.Harvard.Edu}}
-
-\references{
-  Imai, Kosuke and Ying Lu. (2004) \dQuote{ Parametric and Nonparametric
-  Bayesian Models for Ecological Inference in \eqn{2 \times 2}
-  Tables.} Proceedings of the American Statistical Association.
-\url{http://www.princeton.edu/~kimai/research/einonpar.html}
-
-Imai, Kosuke and Ying Lu. (2005) \dQuote{An Incomplete Data Approach
-  to Ecological Inference.} Working Paper, Princeton University,
-available at
-\url{http://www.princeton.edu/~kimai/research/einonpar.html} 
+  Kosuke Imai, Department of Politics, Princeton University,
+  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
+  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
+  \email{ying.lu@Colorado.Edu}
 }
 
-\seealso{\code{eco}, \code{predict.eco}, \code{summary.ecoNP}}
+\references{
+  Imai, Kosuke, Ying Lu and Aaron Strauss. (2006) \dQuote{Bayesian and
+    Likelihood Inference for 2 x 2 Ecological Tables: An Incomplete Data
+    Approach} Technical Report, Princeton University, available at 
+  \url{http://imai.princeton.edu/research/eiall.html}
+}
+
+\seealso{\code{eco}, \code{ecoML}, \code{predict.eco}, \code{summary.ecoNP}}
 \keyword{models}

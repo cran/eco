@@ -1,6 +1,7 @@
 \name{summary.eco}
 
 \alias{summary.eco}
+\alias{print.eco}
 \alias{print.summary.eco}
 
 \title{Summarizing the Results for the Bayesian Parametric Model for
@@ -63,10 +64,10 @@
 \seealso{\code{eco}, \code{predict.eco}}
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}, \url{http://www.princeton.edu/~kimai};
-  Ying Lu, Institute for Quantitative Social Sciences, 
-  Harvard University \email{ylu@Latte.Harvard.Edu}
-}
+  Kosuke Imai, Department of Politics, Princeton University,
+  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
+  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
+  \email{ying.lu@Colorado.Edu}
+  }
 
 \keyword{methods}

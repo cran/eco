@@ -10,9 +10,9 @@
   Normal/Inverse-Wishart prior) for ecological inference in \eqn{2
   \times 2} tables via Markov chain Monte Carlo. It gives the in-sample
   predictions as well as the estimates of the model parameters. The
-  model and algorithm are described in Imai and Lu (2004). The
+  model and algorithm are described in Imai, Lu and Strauss (2006). The
   contextual effect can also be modeled by following the strategy
-  described in Imai and Lu (2005).
+  described in Imai, Lu, and Strauss (2006).
 }
 
 \usage{
@@ -59,9 +59,9 @@ eco(formula, data = parent.frame(), N = NULL, supplement = NULL,
   \item{nu0}{A positive integer representing the prior degrees of
   freedom of the variance matrix \eqn{\Sigma}. the default is \code{4}.
   } 
-  \item{S0}{A postive scalar or a positive definite matrix that specifies 
+  \item{S0}{A positive scalar or a positive definite matrix that specifies 
   the prior scale matrix for the variance matrix \eqn{\Sigma}. If it is 
-  a scalar, then the prior scale matrix will be a digonal matrix with 
+  a scalar, then the prior scale matrix will be a diagonal matrix with 
   the same dimensions as \eqn{\Sigma} and the diagonal elements all take value 
   of \code{S0}, otherwise \code{S0} needs to have same dimensions as 
   \eqn{\Sigma}. When \code{context=TRUE}, \eqn{\Sigma} is a 
@@ -79,7 +79,7 @@ eco(formula, data = parent.frame(), N = NULL, supplement = NULL,
   \item{Sigma.start}{A scalar or a positive definite matrix
    that specified the starting value of the variance matrix 
    \eqn{\Sigma}. If it is  a scalar, then the prior scale 
-  matrix will be a digonal matrix with the same dimensions 
+  matrix will be a diagonal matrix with the same dimensions 
   as \eqn{\Sigma} and the diagonal elements all take value 
   of \code{S0}, otherwise \code{S0} needs to have same dimensions as 
   \eqn{\Sigma}. When \code{context=TRUE}, \eqn{\Sigma} is a 
@@ -135,31 +135,31 @@ eco(formula, data = parent.frame(), N = NULL, supplement = NULL,
 data(reg)
 
 ## NOTE: convergence has not been properly assessed for the following
-## examples. See Imai and Lu (2004, 2005) for more complete analyses.
+## examples. See Imai, Lu and Strauss (2006) for more complete analyses.
 
 ## fit the parametric model with the default prior specification
-res <- eco(Y ~ X, data = reg, verbose = TRUE)
+\dontrun{res <- eco(Y ~ X, data = reg, verbose = TRUE)}
 ## summarize the results
-summary(res)
+\dontrun{summary(res)}
 
 ## obtain out-of-sample prediction
-out <- predict(res, verbose = TRUE)
+\dontrun{out <- predict(res, verbose = TRUE)}
 ## summarize the results
-summary(out)
+\dontrun{summary(out)}
 
 ## load the Robinson's census data
 data(census)
 
 ## fit the parametric model with contextual effects and N 
 ## using the default prior specification
-res1 <- eco(Y ~ X, N = N, context = TRUE, data = census, verbose = TRUE)
+\dontrun{res1 <- eco(Y ~ X, N = N, context = TRUE, data = census, verbose = TRUE)}
 ## summarize the results
-summary(res1)
+\dontrun{summary(res1)}
 
 ## obtain out-of-sample prediction
-out1 <- predict(res1, verbose = TRUE)
+\dontrun{out1 <- predict(res1, verbose = TRUE)}
 ## summarize the results
-summary(out1)
+\dontrun{summary(out1)}
 
 }
 
@@ -190,23 +190,18 @@ summary(out1)
 }
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
+  Kosuke Imai, Department of Politics, Princeton University,
   \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
-  Ying Lu, Institute for Quantitative Social Sciences, 
-  Harvard University \email{ylu@Latte.Harvard.Edu}}
+  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
+  \email{ying.lu@Colorado.Edu}
+  }
 
-\references{
-  Imai, Kosuke and Ying Lu. (2004) \dQuote{ Parametric and Nonparametric
-  Bayesian Models for Ecological Inference in \eqn{2 \times 2}
-  Tables.} Working Paper, Princeton University,
-  available at
-  \url{http://imai.princeton.edu/research/einonpar.html}
-
-  Imai, Kosuke and Ying Lu. (2005) \dQuote{An Incomplete Data Approach
-  to Ecological Inference.} Working Paper, Princeton University,
-  available at
-  \url{http://imai.princeton.edu/research/coarse.html} }
+  \references{
+  Imai, Kosuke, Ying Lu and Aaron Strauss. (2006) \dQuote{Bayesian and
+    Likelihood Inference for 2 x 2 Ecological Tables: An Incomplete Data
+    Approach} Technical Report, Princeton University, available at 
+  \url{http://imai.princeton.edu/research/eiall.html}
 }
 
-\seealso{\code{ecoNP}, \code{predict.eco}, \code{summary.eco}}
+\seealso{\code{ecoML}, \code{ecoNP}, \code{predict.eco}, \code{summary.eco}}
 \keyword{models}

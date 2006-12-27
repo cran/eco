@@ -13,8 +13,10 @@ Model for Ecological Inference in 2x2 Tables}
 }
 
 \usage{
-  \method{predict}{eco}(object, newdraw = NULL, subset = NULL, verbose = FALSE, ...)
-  \method{predict}{ecoX}(object, newdraw = NULL, subset = NULL, newdata = NULL, cond = FALSE, verbose = FALSE, ...)
+  \method{predict}{eco}(object, newdraw = NULL, subset = NULL,
+                   verbose = FALSE, ...)
+  \method{predict}{ecoX}(object, newdraw = NULL, subset = NULL,
+                   newdata = NULL, cond = FALSE, verbose = FALSE, ...)
 }
 
 \arguments{
@@ -70,9 +72,10 @@ Model for Ecological Inference in 2x2 Tables}
 \seealso{\code{eco}, \code{predict.ecoNP}}
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}; Ying Lu, Institute for Quantitative
-  Social Sciences, Harvard University \email{ylu@Latte.Harvard.Edu}
-}
+  Kosuke Imai, Department of Politics, Princeton University,
+  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
+  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
+  \email{ying.lu@Colorado.Edu}
+  }
 
 \keyword{methods}

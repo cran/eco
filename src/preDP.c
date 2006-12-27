@@ -6,10 +6,12 @@
 *******************************************************************/
 
 #include <stddef.h>
+#include <string.h>
 #include <stdio.h>      
 #include <math.h>
 #include <Rmath.h>
 #include <R.h>
+#include <Rinterface.h>
 #include "vector.h"
 #include "subroutines.h"
 #include "rand.h"

@@ -5,11 +5,13 @@
   Copyright: GPL version 2 or later.
 *******************************************************************/
 
+#include <string.h>
 #include <stddef.h>
 #include <stdio.h>      
 #include <math.h>
 #include <Rmath.h>
 #include <R.h>
+#include <Rinterface.h>
 #include "vector.h"
 #include "subroutines.h"
 #include "rand.h"
@@ -346,7 +348,7 @@ void cDPeco(
   }
   
   /*store Gibbs draws after burn_in */
-  R_CheckUserInterrupt();
+   R_CheckUserInterrupt();
   if (main_loop>=*burn_in) {
      itempC++;
     if (itempC==nth){
@@ -374,7 +376,7 @@ void cDPeco(
     if (itempP == main_loop) {
       Rprintf("%3d percent done.\n", progress*10);
       itempP+=ftrunc((double) *n_gen/10); progress++;
-      R_FlushConsole();
+       R_FlushConsole();
     }
   } /*end of MCMC for DP*/
   
@@ -382,7 +384,7 @@ void cDPeco(
     Rprintf("100 percent done.\n");
   
   /** write out the random seed **/
-  PutRNGstate();
+   PutRNGstate();
   
   /* Freeing the memory */
   FreeMatrix(S0, n_dim);

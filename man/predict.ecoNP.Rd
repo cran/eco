@@ -13,8 +13,10 @@
 }
 
 \usage{
-  \method{predict}{ecoNP}(object, newdraw = NULL, subset = NULL, obs = NULL, verbose = FALSE, ...)
-  \method{predict}{ecoNPX}(object, newdraw = NULL, subset = NULL, obs = NULL, cond = FALSE, verbose = FALSE, ...)
+  \method{predict}{ecoNP}(object, newdraw = NULL, subset = NULL, obs = NULL,
+                   verbose = FALSE, ...)
+  \method{predict}{ecoNPX}(object, newdraw = NULL, subset = NULL, obs = NULL,
+                   cond = FALSE, verbose = FALSE, ...)
 }
 
 \arguments{
@@ -73,9 +75,10 @@
   \code{summary.ecoNP}}
 
 \author{
-  Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}; Ying Lu, Institute for Quantitative
-  Social Sciences, Harvard University \email{ylu@Latte.Harvard.Edu}
+  Kosuke Imai, Department of Politics, Princeton University,
+  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
+  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
+  \email{ying.lu@Colorado.Edu}
 }
 
 \keyword{methods}
