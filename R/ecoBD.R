@@ -2,6 +2,8 @@ ecoBD <- function(formula, data = parent.frame(), N=NULL){
   mf <- match.call()
   tt <- terms(formula)
   attr(tt, "intercept") <- 0
+  vnames <- attr(tt, "variables")
+  vnamesR <- vnames[[2]]
   
   if (is.matrix(eval.parent(mf$data)))
     data <- as.data.frame(data)
@@ -29,10 +31,27 @@ ecoBD <- function(formula, data = parent.frame(), N=NULL){
     R <- ncol(Y)
     Wmin <- Wmax <- Nmin <- Nmax <- array(NA, c(n.obs, R, C))
     clab <- rlab <- NULL
-    for (j in 1:C) 
-      clab <- c(clab, paste("c", j, sep=""))
+    if (length(vnames) == 3)
+      clab <- c(vnames[[3]], paste("not",vnames[[3]]))
+    else {
+      for (j in 1:C) {
+        if ((j == C) & (length(vnames) < j+2))
+          clab <- c(clab, "other")
+        else
+          clab <- c(clab, vnames[[j+2]])
+      }
+    }
+    if (length(vnamesR) == 1)
+      rlab <- c(vnamesR, paste("not",vnamesR))
+    else {
+      for (i in 1:R) {
+        if ((i == R) & (length(vnamesR) < i+1))
+          rlab <- c(rlab, "other")
+        else
+          rlab <- c(rlab, vnamesR[[i]])
+      }
+    }
     for (i in 1:R) {
-      rlab <- c(rlab, paste("r", i, sep=""))
       for (j in 1:C) {
         Nmin[,i,j] <- apply(cbind(0, X[,j]+Y[,i]-N), 1, max)
         Nmax[,i,j] <- apply(cbind(Y[,i], X[,j]), 1, min)
@@ -58,10 +77,27 @@ ecoBD <- function(formula, data = parent.frame(), N=NULL){
     R <- ncol(Y)
     Wmin <- Wmax <- array(NA, c(n.obs, R, C))
     clab <- rlab <- NULL
-    for (j in 1:C) 
-      clab <- c(clab, paste("c", j, sep=""))
+    if (length(vnames) == 3)
+      clab <- c(vnames[[3]], paste("not",vnames[[3]]))
+    else {
+      for (j in 1:C) {
+        if ((j == C) & (length(vnames) < j+2))
+          clab <- c(clab, "other")
+        else
+          clab <- c(clab, vnames[[j+2]])
+      }
+    }
+    if (length(vnamesR) == 1)
+      rlab <- c(vnamesR, paste("not",vnamesR))
+    else {
+      for (i in 1:R) {
+        if ((i == R) & (length(vnamesR) < i+1))
+          rlab <- c(rlab, "other")
+        else
+          rlab <- c(rlab, vnamesR[[i]])
+      }
+    }
     for (i in 1:R) {
-      rlab <- c(rlab, paste("r", i, sep=""))
       for (j in 1:C) {
         Wmin[,i,j] <- apply(cbind(0, (X[,j]+Y[,i]-1)/X[,j]), 1, max)
         Wmax[,i,j] <- apply(cbind(1, Y[,i]/X[,j]), 1, min)

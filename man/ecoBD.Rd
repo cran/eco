@@ -37,8 +37,12 @@ ecoBD(formula, data = parent.frame(), N = NULL)
   For example, \code{Y ~ X} specifies \code{Y} as the first column
   margin and \code{X} as the first row margin in \eqn{2 \times 2} tables.
   If counts are used, \code{formula} may omit the last row and/or column
-  margin of the table only if \code{N} is supplied. For larger tables,
-  one can use \code{cbind()} and \code{+}. For example, \code{cbind(Y1,
+  margin of the table only if \code{N} is supplied. In this example, the
+  columns will be labeled as \code{X} and \code{not X}, and the rows
+  will be labeled as \code{Y} and \code{not Y}.
+
+  For larger tables, one can use \code{cbind()} and \code{+}. For
+  example, \code{cbind(Y1,
     Y2, Y3) ~ X1 + X2 + X3 + X4)} specifies \eqn{3 \times 4} tables.
  
   An \eqn{R \times C} ecological table in the form of counts:
@@ -83,9 +87,9 @@ ecoBD(formula, data = parent.frame(), N = NULL)
 data(reg)
 
 ## calculate the bounds
-\dontrun{res <- ecoBD(Y ~ X, N = N, data = reg)}
+res <- ecoBD(Y ~ X, N = N, data = reg)
 ## print the results
-\dontrun{print(res)}
+print(res)
 }
 
 \value{
@@ -112,15 +116,23 @@ data(reg)
   The object can be printed through \code{print.ecoBD}.
 }
 
+\references{
+  Imai, Kosuke, Ying Lu and Aaron Strauss. (Forthcoming)
+  \dQuote{eco: R Package for Ecological Inference in 2x2 Tables}
+  Journal of Statistical Software, available at
+  \url{http://imai.princeton.edu/research/eco.html}
+
+  Imai, Kosuke, Ying Lu and Aaron Strauss. (Forthcoming)
+  \dQuote{Bayesian and Likelihood Inference for 2 x 2 Ecological Tables:
+    An Incomplete Data Approach} Political Analysis, available at
+ \url{http://imai.princeton.edu/research/eiall.html}
+}
+
 \author{
   Kosuke Imai, Department of Politics, Princeton University
-  \email{kimai@Princeton.Edu}, \url{http://www.princeton.edu/~kimai};
+  \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu/};
   Ying Lu, Institute for Quantitative Social Sciences, 
-  Harvard University \email{ylu@Latte.Harvard.Edu}}
-
-\references{
-  Imai, Kosuke. (2005) \dQuote{Ecological Inference in \eqn{R \times C}
-    Tables} Working Paper, Princeton University.
+  Harvard University \email{ylu@Latte.Harvard.Edu}
 }
 
 \seealso{\code{eco}, \code{ecoNP}}

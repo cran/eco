@@ -1,4 +1,4 @@
-\name{predict.eco}
+\name{predict.ecoNP}
 
 \alias{predict.ecoNP}
 \alias{predict.ecoNPX}
