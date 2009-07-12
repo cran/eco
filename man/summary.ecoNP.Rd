@@ -64,8 +64,10 @@ Ecological Inference in 2x2 Tables }
 \author{
   Kosuke Imai, Department of Politics, Princeton University,
   \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
-  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
-  \email{ying.lu@Colorado.Edu}
+ Ying Lu, Department of Humanities and Social Sciences in the
+Professions, Steinhardt School of Culture, Education and Human
+Development, New York University,
+  \email{yl46@Nyu.Edu}
 }
 
 \keyword{methods}
