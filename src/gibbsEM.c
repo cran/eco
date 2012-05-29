@@ -1191,7 +1191,7 @@ void initCCAR(Param* params, double* pdTheta) {
 
   /*Current version of program does not handle homogenous data*/
   if ((x1_samp+x0_samp)>0) {
-    printf("WARNING: Homogenous data is ignored and not handled by the current version of eco.");
+    Rprintf("WARNING: Homogenous data is ignored and not handled by the current version of eco.");
   }
 
 
@@ -1216,11 +1216,15 @@ void printColumnHeader(int main_loop, int iteration_max, setParam* setP, int fin
   int param_len;
   param_len = setP->param_len;
 
-  char temp[50]; int hlen;
-  if (!finalTheta) hlen=sprintf(temp, "cycle %d/%d:",main_loop,iteration_max); //Length of cycle text
-  else hlen=sprintf(temp, "Final Theta:");
-  for (i=0;i<hlen;i++) Rprintf(" ");
-
+  //trying to print nicely, but it throws an error
+  //char temp[50]; int hlen;
+  //if (!finalTheta) hlen=sprintf(temp, "cycle %d/%d:",main_loop,iteration_max); //Length of cycle text
+  //else hlen=sprintf(temp, "Final Theta:");
+  //for (i=0;i<hlen;i++) Rprintf(" ");
+  
+  if (!finalTheta) Rprintf("cycle %d/%d:",main_loop,iteration_max);
+  else Rprintf("Final Theta:");
+  
   if (param_len<=5) { //CAR
     Rprintf("  mu_1  mu_2 sig_1 sig_2");
     if (!setP->fixedRho || finalTheta) Rprintf("  r_12");
