@@ -24,19 +24,16 @@ the element \code{theta.em} of an object of class \code{ecoML}.}
 \author{
   Kosuke Imai, Department of Politics, Princeton University,
   \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
-  Ying Lu, Department of Humanities and Social Sciences in the 
-Professions, Steinhardt School of Culture, Education and Human 
-Development, New York University, 
-  \email{yl46@Nyu.Edu}
+  Ying Lu, Center for Promoting Research Involving Innovative Statistical Methodology (PRIISM), New York University
+  \email{ying.lu@nyu.Edu}
   Aaron Strauss, Department of Politics, Princeton University,
  \email{abstraus@Princeton.Edu}.
   }
 
-  \references{
-  Imai, Kosuke, Ying Lu and Aaron Strauss. (Forthcoming).
+  \references{ Imai, Kosuke, Ying Lu and Aaron Strauss. (2011).
   \dQuote{eco: R Package for Ecological Inference in 2x2 Tables}
-  Journal of Statistical Software, available at
-  \url{http://imai.princeton.edu/research/eco.html}
+  Journal of Statistical Software, Vol. 42, No. 5, pp. 1-23. available
+  at \url{http://imai.princeton.edu/software/eco.html}
 
   Imai, Kosuke, Ying Lu and Aaron Strauss. (2008). \dQuote{Bayesian and
     Likelihood Inference for 2 x 2 Ecological Tables: An Incomplete Data

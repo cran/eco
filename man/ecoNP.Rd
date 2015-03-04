@@ -5,14 +5,12 @@
 \title{Fitting the Nonparametric Bayesian Models of Ecological Inference
   in 2x2 Tables}  
 
-\description{
-  \code{ecoNP} is used to fit the nonparametric Bayesian model (based on
-  a Dirichlet process prior) for ecological inference in \eqn{2 \times
-  2} tables via Markov chain Monte Carlo. It gives the in-sample
-  predictions as well as out-of-sample predictions for population
-  inference.  The models and algorithms are described in Imai, Lu and
-  Strauss (2008, Forthcoming). 
-}
+\description{ \code{ecoNP} is used to fit the nonparametric Bayesian
+  model (based on a Dirichlet process prior) for ecological inference
+  in \eqn{2 \times 2} tables via Markov chain Monte Carlo. It gives
+  the in-sample predictions as well as out-of-sample predictions for
+  population inference.  The models and algorithms are described in
+  Imai, Lu and Strauss (2008, 2011).  }
 
 \usage{
 ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
@@ -46,11 +44,11 @@ ecoNP(formula, data = parent.frame(), N = NULL, supplement = NULL,
   \item{context}{Logical. If \code{TRUE}, the contextual effect is also
     modeled, that is to assume the row margin \eqn{X} and the unknown 
    \eqn{W_1} and \eqn{W_2} are correlated. See Imai, Lu and Strauss
-   (2008, Forthcoming) for details. The default is \code{FALSE}. 
+   (2008, 2011) for details. The default is \code{FALSE}. 
   }
   \item{mu0}{A scalar or a numeric vector that specifies the prior mean 
     for the mean parameter \eqn{\mu} of the base prior distribution \eqn{G_0}
-    (see Imai, Lu and Strauss (2008, Forthcoming) for detailed 
+    (see Imai, Lu and Strauss (2008, 2011) for detailed 
     descriptions of Dirichlete prior and the normal base prior distribution) . 
     If it is a scalar, then its value will be repeated to yield a vector 
     of the length of \eqn{\mu}, otherwise,
@@ -127,7 +125,7 @@ data(reg)
 
 ## fit the nonparametric model to give in-sample predictions
 ## store the parameters to make population inference later
-res <- ecoNP(Y ~ X, data = reg, n.draws = 50, param = TRUE, verbose = TRUE) 
+\dontrun{res <- ecoNP(Y ~ X, data = reg, n.draws = 50, param = TRUE, verbose = TRUE)
 
 ##summarize the results
 summary(res)
@@ -158,7 +156,7 @@ summary(res1)
 
 ## out-of sample prediction 
 pres1 <- predict(res1)
-summary(pres1)
+summary(pres1)}
 }
 
 \value{
@@ -197,15 +195,14 @@ summary(pres1)
 \author{
   Kosuke Imai, Department of Politics, Princeton University,
   \email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu};
-  Ying Lu, Department of Sociology, University of Colorado at Boulder, 
-  \email{ying.lu@Colorado.Edu}
+  Ying Lu, Center for Promoting Research Involving Innovative Statistical Methodology (PRIISM), New York University 
+  \email{ying.lu@nyu.Edu}
 }
 
-\references{
-  Imai, Kosuke, Ying Lu and Aaron Strauss. (Forthcoming).
+\references{ Imai, Kosuke, Ying Lu and Aaron Strauss. (2011).
   \dQuote{eco: R Package for Ecological Inference in 2x2 Tables}
-  Journal of Statistical Software, available at
-  \url{http://imai.princeton.edu/research/eco.html}
+  Journal of Statistical Software, Vol. 42, No. 5, pp. 1-23. available
+  at \url{http://imai.princeton.edu/software/eco.html}
 
   Imai, Kosuke, Ying Lu and Aaron Strauss. (2008).
   \dQuote{Bayesian and Likelihood Inference for 2 x 2 Ecological Tables:
