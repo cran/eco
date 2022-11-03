@@ -111,21 +111,22 @@
 #' \code{parameter = TRUE}.  
 #' \item{mu}{The posterior draws of the population mean parameter, \eqn{\mu}.} 
 #' \item{Sigma}{The posterior draws of the population variance matrix, \eqn{\Sigma}.}
-#' @author Kosuke Imai, Department of Politics, Princeton University,
-#' \email{kimai@@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying
-#' Lu,Center for Promoting Research Involving Innovative Statistical
-#' Methodology (PRIISM), New York University, \email{ying.lu@@nyu.Edu}
 #' @seealso \code{ecoML}, \code{ecoNP}, \code{predict.eco}, \code{summary.eco}
 #' @references Imai, Kosuke, Ying Lu and Aaron Strauss. (2011).  \dQuote{eco: R
 #' Package for Ecological Inference in 2x2 Tables} Journal of Statistical
-#' Software, Vol. 42, No. 5, pp. 1-23. available at
-#' \url{http://imai.princeton.edu/software/eco.html}
+#' Software, Vol. 42, No. 5, pp. 1-23.
 #' 
 #' Imai, Kosuke, Ying Lu and Aaron Strauss. (2008). \dQuote{Bayesian and
 #' Likelihood Inference for 2 x 2 Ecological Tables: An Incomplete Data
-#' Approach} Political Analysis, Vol. 16, No. 1 (Winter), pp. 41-69. available
-#' at \url{http://imai.princeton.edu/research/eiall.html}
+#' Approach} Political Analysis, Vol. 16, No. 1 (Winter), pp. 41-69.
 #' @keywords models
+#' 
+#' @useDynLib eco, .registration = TRUE
+#' 
+#' @importFrom MASS mvrnorm
+#' @importFrom utils packageDescription
+#' @importFrom stats as.formula coef model.frame model.matrix model.response predict quantile sd terms weighted.mean
+#' 
 #' @examples
 #' 
 #' 
@@ -161,6 +162,7 @@
 #' summary(out1)
 #' }
 #' 
+#' @export eco
 eco <- function(formula, data = parent.frame(), N = NULL, supplement = NULL,
                 context = FALSE, mu0 = 0, tau0 = 2, nu0 = 4, S0 = 10,
                 mu.start = 0, Sigma.start = 10, parameter = TRUE,

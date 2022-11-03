@@ -357,7 +357,8 @@ void initTheta(double* pdTheta_in,Param* params, double* pdTheta) {
 void ecoEStep(Param* params, double* suff) {
 
   int t_samp,n_samp,s_samp,x1_samp,x0_samp,i,j, verbose;
-  double loglik,testdens;
+  // double loglik,testdens;
+  double loglik;
   Param* param; setParam* setP; caseParam* caseP;
   setP=params[0].setP;
   verbose=setP->verbose;
@@ -407,14 +408,14 @@ void ecoEStep(Param* params, double* suff) {
       caseP->suff=SS_W2;
       caseP->W[1]=paramIntegration(&SuffExp,param);
       caseP->suff=SS_Test;
-      testdens=paramIntegration(&SuffExp,param);
+      // testdens=paramIntegration(&SuffExp,param);
       if (setP->calcLoglik==1 && setP->iter>1) loglik+=getLogLikelihood(param);
 
       //report error E1 if E[W1],E[W2] is not on the tomography line
       if (fabs(caseP->W[0]-getW1FromW2(caseP->X, caseP->Y,caseP->W[1]))>0.011) {
         Rprintf("E1 %d %5g %5g %5g %5g %5g %5g %5g %5g err:%5g\n", i, caseP->X, caseP->Y, caseP->mu[0], caseP->mu[1], caseP->normcT,Wstar[i][0],Wstar[i][1],Wstar[i][2],fabs(caseP->W[0]-getW1FromW2(caseP->X, caseP->Y,caseP->W[1])));
-        char ch;
-        scanf("Hit enter to continue %c\n", &ch );
+        // char ch;
+        // scanf("Hit enter to continue %c\n", &ch );
       }
       //report error E2 if Jensen's inequality doesn't hold
       if (Wstar[i][4]<pow(Wstar[i][1],2) || Wstar[i][2]<pow(Wstar[i][0],2))
@@ -567,7 +568,12 @@ void ecoMStepNCAR(double* Suff, double* pdTheta, Param* params) {
   //double[2][2] InvSigma=setP->InvSigma;
   //double[3][3] Sigma3=setP->Sigma3;   /* covariance matrix*/
   //double[3][3] InvSigma3=setP->Sigma3;   /* inverse covariance matrix*/
-  int ii,i,j,verbose,t_samp;
+  //int ii,i,j,verbose,t_samp;
+  int ii,i,j;
+  int verbose=0;
+  int t_samp=0;
+  verbose=t_samp;
+  t_samp=verbose;
   verbose=setP->verbose;
   t_samp=setP->t_samp;
 
@@ -733,7 +739,12 @@ void ecoMStepNCAR(double* Suff, double* pdTheta, Param* params) {
 void ecoMStepCCAR(double* pdTheta, Param* params) {
   setParam* setP=params[0].setP;
   int k=setP->ccar_nvar;
-  int ii,i,j,verbose,t_samp;
+  //int ii,i,j,verbose,t_samp;
+  int ii,i,j;
+  int verbose=0;
+  int t_samp=0;
+  verbose=t_samp;
+  t_samp=verbose;
   verbose=setP->verbose;
   t_samp=setP->t_samp;
   double **InvSigma=doubleMatrix(2,2);
@@ -1505,7 +1516,11 @@ void gridEStep(Param* params, int n_samp, int s_samp, int x1_samp, int x0_samp, 
   for(j=0; j<5; j++)
     suff[j]=suff[j]/t_samp;
 
-  Free(n_grid);Free(vtemp);Free(mflag);Free(prob_grid);Free(prob_grid_cum);
+  free(n_grid);
+  Free(vtemp);
+  free(mflag);
+  Free(prob_grid);
+  Free(prob_grid_cum);
   FreeMatrix(W1g,n_samp);FreeMatrix(W2g,n_samp);FreeMatrix(X,n_samp);
   FreeMatrix(W,t_samp);FreeMatrix(Wstar,t_samp);
 

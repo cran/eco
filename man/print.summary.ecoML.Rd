@@ -5,8 +5,7 @@
 \title{Print the Summary of the Results for the Maximum Likelihood Parametric Model for
 Ecological Inference in 2x2 Tables}
 \usage{
-\method{print}{summary.ecoML}(x, digits = max(3, getOption("digits") - 3),
-  ...)
+\method{print}{summary.ecoML}(x, digits = max(3, getOption("digits") - 3), ...)
 }
 \arguments{
 \item{x}{An object of class \code{summary.ecoML}.}
@@ -51,13 +50,5 @@ This object can be printed by \code{print.summary.eco}
 }
 \seealso{
 \code{ecoML}
-}
-\author{
-Kosuke Imai, Department of Politics, Princeton University,
-\email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying Lu,
-Center for Promoting Research Involving Innovative Statistical Methodology
-(PRIISM), New York University \email{ying.lu@nyu.Edu}; Aaron Strauss,
-Department of Politics, Princeton University,
-\email{abstraus@Princeton.Edu}
 }
 \keyword{methods}

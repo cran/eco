@@ -5,8 +5,14 @@
 \title{Out-of-Sample Posterior Prediction under the Nonparametric Bayesian Model
 for Ecological Inference in 2x2 Tables}
 \usage{
-\method{predict}{ecoNP}(object, newdraw = NULL, subset = NULL, obs = NULL,
-  verbose = FALSE, ...)
+\method{predict}{ecoNP}(
+  object,
+  newdraw = NULL,
+  subset = NULL,
+  obs = NULL,
+  verbose = FALSE,
+  ...
+)
 }
 \arguments{
 \item{object}{An output object from \code{ecoNP}.}
@@ -58,11 +64,5 @@ Monte Carlo sample of the model parameters is used. In either case, setting
 }
 \seealso{
 \code{eco}, \code{ecoNP}, \code{summary.eco}, \code{summary.ecoNP}
-}
-\author{
-Kosuke Imai, Department of Politics, Princeton University,
-\email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying Lu,
-Center for Promoting Research Involving Innovative Statistical Methodology
-(PRIISM), New York University \email{ying.lu@nyu.Edu}
 }
 \keyword{methods}

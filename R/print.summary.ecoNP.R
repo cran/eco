@@ -24,12 +24,9 @@
 #' \item{W2.table}{Unit-level posterior estimates for \eqn{W_2}.}
 #' 
 #' This object can be printed by \code{print.summary.ecoNP}
-#' @author Kosuke Imai, Department of Politics, Princeton University,
-#' \email{kimai@@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying Lu,
-#' Center for Promoting Research Involving Innovative Statistical Methodology
-#' (PRIISM), New York University \email{ying.lu@@nyu.Edu}
 #' @seealso \code{ecoNP}, \code{predict.eco}
 #' @keywords methods
+#' @export
 print.summary.ecoNP <- function(x, digits=max(3, getOption("digits")-3), ...) 
      {
     cat("\nCall: ") 

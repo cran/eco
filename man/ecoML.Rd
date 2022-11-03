@@ -5,10 +5,21 @@
 \title{Fitting Parametric Models and Quantifying Missing Information for Ecological
 Inference in 2x2 Tables}
 \usage{
-ecoML(formula, data = parent.frame(), N = NULL, supplement = NULL,
-  theta.start = c(0, 0, 1, 1, 0), fix.rho = FALSE, context = FALSE,
-  sem = TRUE, epsilon = 10^(-6), maxit = 1000, loglik = TRUE,
-  hyptest = FALSE, verbose = FALSE)
+ecoML(
+  formula,
+  data = parent.frame(),
+  N = NULL,
+  supplement = NULL,
+  theta.start = c(0, 0, 1, 1, 0),
+  fix.rho = FALSE,
+  context = FALSE,
+  sem = TRUE,
+  epsilon = 10^(-6),
+  maxit = 1000,
+  loglik = TRUE,
+  hyptest = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{formula}{A symbolic description of the model to be fit, specifying the
@@ -200,11 +211,6 @@ data(census)
 ## summarize the results
 \dontrun{summary(res)}
 
-## obtain out-of-sample prediction
-\dontrun{out <- predict(res, verbose = TRUE)}
-## summarize the results
-\dontrun{summary(out)}
-
 ## fit the parametric model with some individual 
 ## level data using the default prior specification
 surv <- 1:600
@@ -213,28 +219,17 @@ surv <- 1:600
 ## summarize the results
 \dontrun{summary(res1)}
 
-
 }
 \references{
 Imai, Kosuke, Ying Lu and Aaron Strauss. (2011).  \dQuote{eco: R
 Package for Ecological Inference in 2x2 Tables} Journal of Statistical
-Software, Vol. 42, No. 5, pp. 1-23. available at
-\url{http://imai.princeton.edu/software/eco.html}
+Software, Vol. 42, No. 5, pp. 1-23.
 
 Imai, Kosuke, Ying Lu and Aaron Strauss. (2008).  \dQuote{Bayesian and
 Likelihood Inference for 2 x 2 Ecological Tables: An Incomplete Data
-Approach} Political Analysis, Vol. 16, No. 1 (Winter), pp. 41-69. available
-at \url{http://imai.princeton.edu/research/eiall.html}
+Approach} Political Analysis, Vol. 16, No. 1 (Winter), pp. 41-69.
 }
 \seealso{
 \code{eco}, \code{ecoNP}, \code{summary.ecoML}
-}
-\author{
-Kosuke Imai, Department of Politics, Princeton University,
-\email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying Lu,
-Center for Promoting Research Involving Innovative Statistical Methodology
-(PRIISM), New York University, \email{ying.lu@nyu.Edu}; Aaron Strauss,
-Department of Politics, Princeton University,
-\email{abstraus@Princeton.Edu}.
 }
 \keyword{models}

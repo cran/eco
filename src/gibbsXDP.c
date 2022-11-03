@@ -428,44 +428,43 @@ void cDPecoX(
     }
   } /*end of MCMC for DP*/
 
-if (*verbose)
-     Rprintf("100 percent done.\n");
-     
-     /** write out the random seed **/
-     PutRNGstate();
-    
-    /* Freeing the memory */
-     FreeMatrix(S0, n_dim+1);  
-     FreeMatrix(X, n_samp);
-     FreeMatrix(W, t_samp);
-     FreeMatrix(Wstar, t_samp);
-     FreeMatrix(S_W, s_samp);
-     FreeMatrix(S_Wstar, s_samp);
+  if (*verbose)
+    Rprintf("100 percent done.\n");
+  
+  /** write out the random seed **/
+  PutRNGstate();
+  
+  /* Freeing the memory */
+  FreeMatrix(S0, n_dim+1);  
+  FreeMatrix(X, n_samp);
+  FreeMatrix(W, t_samp);
+  FreeMatrix(Wstar, t_samp);
+  FreeMatrix(S_W, s_samp);
+  FreeMatrix(S_Wstar, s_samp);
   FreeMatrix(W1g, n_samp);
   FreeMatrix(W2g, n_samp);
   free(n_grid);
   FreeMatrix(mu, t_samp);
   Free3DMatrix(Sigma, t_samp,n_dim+1);
   Free3DMatrix(InvSigma, t_samp, n_dim+1);
-  free(mu_w);
+  Free(mu_w);
   FreeMatrix(Sigma_w, n_dim);
   FreeMatrix(InvSigma_w, n_dim);
   free(C);
-  free(q);
-  free(qq);
+  Free(q);
+  Free(qq);
   FreeMatrix(S_tvt, n_dim+1);
   FreeMatrix(Wstarmix, t_samp);
-  free(mu_mix);
+  Free(mu_mix);
   FreeMatrix(Sigma_mix, n_dim+1);
   FreeMatrix(InvSigma_mix, n_dim+1);
   free(sortC);
   free(indexC);
-
   free(label);
-  free(vtemp);
+  Free(vtemp);
   FreeMatrix(mtemp, n_dim+1);
   FreeMatrix(mtemp1, n_dim+1);
-   free(onedata);
+  FreeMatrix(onedata, 1);
 } /* main */
 
 

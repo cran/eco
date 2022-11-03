@@ -6,8 +6,14 @@
 \title{Summarizing the Results for the Bayesian Parametric Model for Ecological
 Inference in 2x2 Tables}
 \usage{
-\method{summary}{eco}(object, CI = c(2.5, 97.5), param = TRUE,
-  units = FALSE, subset = NULL, ...)
+\method{summary}{eco}(
+  object,
+  CI = c(2.5, 97.5),
+  param = TRUE,
+  units = FALSE,
+  subset = NULL,
+  ...
+)
 }
 \arguments{
 \item{object}{An output object from \code{eco}.}
@@ -52,11 +58,5 @@ This object can be printed by \code{print.summary.eco}
 }
 \seealso{
 \code{eco}, \code{predict.eco}
-}
-\author{
-Kosuke Imai, Department of Politics, Princeton University,
-\email{kimai@Princeton.Edu}, \url{http://imai.princeton.edu}; Ying Lu,
-Center for Promoting Research Involving Innovative Statistical Methodology
-(PRIISM), New York University \email{ying.lu@nyu.Edu}
 }
 \keyword{methods}
