@@ -1,6 +1,6 @@
 Package: eco
-Version: 4.0-4
-Date: 2025-10-09
+Version: 4.0-5
+Date: 2025-10-21
 Title: Ecological Inference in 2x2 Tables
 Authors@R: c(
   person("Kosuke", "Imai", , "imai@Harvard.Edu", c("aut", "cre")),
@@ -19,10 +19,10 @@ URL: https://github.com/kosukeimai/eco
 BugReports: https://github.com/kosukeimai/eco/issues
 RoxygenNote: 7.3.3
 NeedsCompilation: yes
-Packaged: 2025-10-16 00:43:21 UTC; kosukeimai
+Packaged: 2025-10-23 00:19:56 UTC; kosukeimai
 Author: Kosuke Imai [aut, cre],
   Ying Lu [aut],
   Aaron Strauss [aut],
   Hubert Jin [ctb]
 Repository: CRAN
-Date/Publication: 2025-10-21 11:10:02 UTC
+Date/Publication: 2025-10-23 10:40:20 UTC

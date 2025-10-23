@@ -23,7 +23,7 @@ test_that("tests eco on registration data", {
   x <- summary(res)
   expect_that(length(x), is_equivalent_to(8))
   expect_true("W2.table" %in% names(x))
-  expect_equal(x$param.table[2,1], 2.976173, tolerance = accuracy1)
+  expect_equal(x$param.table[2,1], 2.976172, tolerance = accuracy1)
   expect_equal(x$param.table[3,4], 8.238363, tolerance = accuracy1)
 
   # obtain out-of-sample prediction
@@ -159,10 +159,10 @@ if (!donotrun) test_that("tests ecoNP on Robinson census data", {
   x <- summary(res1)
   expect_that(length(x), is_equivalent_to(8))
   expect_false(is.null(x$agg.wtable))
-  expect_equal(x$agg.table[1,2], 0.009952511, tolerance = accuracy1)
-  expect_equal(x$agg.table[2,3], 0.8690776, tolerance = accuracy1)
-  expect_equal(x$agg.wtable[1,2], 0.009508983, tolerance = accuracy1)
-  expect_equal(x$agg.wtable[2,3], 0.9005222, tolerance = accuracy1)
+  expect_equal(x$agg.table[1,2], 0.0134030, tolerance = accuracy1)
+  expect_equal(x$agg.table[2,3], 0.8709344, tolerance = accuracy1)
+  expect_equal(x$agg.wtable[1,2], 0.0113289, tolerance = accuracy1)
+  expect_equal(x$agg.wtable[2,3], 0.9033144, tolerance = accuracy1)
  
   # out-of sample prediction 
   pres1 <- predict(res1)

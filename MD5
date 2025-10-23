@@ -1,5 +1,5 @@
-4fb9ba9ea74a0c89f512e1b75f3339fc *ChangeLog
-47c7a56d5b3ce824ceb5513b60db02ce *DESCRIPTION
+510ff969130acbedcaca30dcca51e4b9 *ChangeLog
+d9bd6d3db98615496dc6586a0c2b1283 *DESCRIPTION
 3826eefd9729ffe38d147eded95845a5 *NAMESPACE
 5c9512edc55d4f5b2a30101b23d8ad1d *R/Qfun.R
 b74ced70c45cdb899135650f263f04fe *R/census.R
@@ -9,7 +9,7 @@ d476b8612bdc8dd9e2268b6cefea3744 *R/coef.ecoNP.R
 f305604a35b7846dcc1072c802812093 *R/eco.R
 c7cc9e7d929fb6426b2ac41a2a4e4a3d *R/ecoBD.R
 ec74fb120755d764a8c07ef534831b50 *R/ecoCV.R
-4ce19300cac84604be907a143088296b *R/ecoNP.R
+89e135c7a78c8c1bdcf26eb14538b1ce *R/ecoNP.R
 d571c7dcb6ffae9532bff0b392edd3a1 *R/ecoRC.R
 d5d788e4e3e554ffbb8424a482416b2a *R/emeco.R
 6c644c7e6e990443dcf79b10722e8180 *R/eminfo.R
@@ -48,7 +48,7 @@ e07f2b7374c7f1e0b77d5da7c52256ab *man/census.Rd
 ef5e2d1d64ee0c88f3a1c41febc4fca0 *man/eco.Rd
 dd4edfa5468da775b29ac620ad626833 *man/ecoBD.Rd
 ff9128a1e3216fe93861631e755cc2b9 *man/ecoML.Rd
-12c5d85c9740db4b1393a9ac106fed6a *man/ecoNP.Rd
+b1e2feea97d0b40ad7b22667a8c381f4 *man/ecoNP.Rd
 54999c40326f34d218754a9ed8a6361c *man/forgnlit30.Rd
 184c21ad3ee98fa39360f322ea754469 *man/forgnlit30c.Rd
 4b841a7479914844017958286689bae5 *man/housep88.Rd
@@ -73,10 +73,10 @@ de17d4ca6e1eadef448d31e5bb278be9 *src/bayes.h
 35d38b0ba2545a72dcd5e3daa4df3c85 *src/gibbsBase.c
 82a00f75e3c796b5b66e24a5b3fc1198 *src/gibbsBase2C.c
 cd03908bee96f1538c50e907fcd5eb7b *src/gibbsBaseRC.c
-7fdd5812c1cb5c9f2f626cf866bfec85 *src/gibbsDP.c
+9c4ef87eca5642ccc9366b3ad569cd8b *src/gibbsDP.c
 f203c4ff7eee8231e7c8089bc69c950a *src/gibbsEM.c
 48c80c9da450292d7566da2dc4bcc1db *src/gibbsXBase.c
-5ce79d8310afe0d310cca73042981ddb *src/gibbsXDP.c
+c4da0a323e918415a8e9264de9a11a14 *src/gibbsXDP.c
 9838dce871783dc1e06daee8da07a315 *src/gibbsZBase.c
 160b0534a7e76de76c312da1fe44ad34 *src/init.c
 c24852e22728b2f506134dd8221e522f *src/macros.h
@@ -92,4 +92,4 @@ d32b15707595f439df5fbaabee5b85c3 *src/sample.h
 d0d76bc55256cd2eacbaf43102f52369 *src/vector.c
 9f7d40b1458a95830ba736c18ab76522 *src/vector.h
 d3082437c056ac6d8ed00e5a42e94863 *tests/testthat.R
-45eaf263e79906011c0a591fbdde8807 *tests/testthat/test-all.R
+78b09d07d309039339fb7641831810c3 *tests/testthat/test-all.R

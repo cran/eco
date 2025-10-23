@@ -163,7 +163,7 @@ data(reg)
 
 ## fit the nonparametric model to give in-sample predictions
 ## store the parameters to make population inference later
-\donttest{res <- ecoNP(Y ~ X, data = reg, n.draws = 50, param = TRUE, verbose = TRUE)
+res <- ecoNP(Y ~ X, data = reg, n.draws = 50, param = TRUE, verbose = TRUE)
 
 ##summarize the results
 summary(res)
@@ -179,7 +179,7 @@ oldpar <- par(mfrow=c(2,1))
 plot(density(out[,1]), main = "W1")
 plot(density(out[,2]), main = "W2")
 
-
+\donttest{
 ## load the Robinson's census data
 data(census)
 
@@ -194,8 +194,8 @@ summary(res1)
 
 ## out-of sample prediction 
 pres1 <- predict(res1)
-summary(pres1)
-par(oldpar)}
+summary(pres1)}
+par(oldpar)
 
 }
 \references{

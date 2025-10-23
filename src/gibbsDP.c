@@ -319,8 +319,6 @@ void cDPeco(
 
     while (dtemp > qq[j]) 
       j++;
-
-
     /** Dirichlet update Sigma_i, mu_i|Sigma_i **/
     /* j=i: posterior update given Wstar[i] */
     if (j==i){
@@ -331,7 +329,6 @@ void cDPeco(
       C[i]=nstar;
       nstar++;
     }
-
     /* j=i': replace with i' obs */
     else {
       /*1. mu_i=mu_j, Sigma_i=Sigma_j*/
@@ -355,7 +352,7 @@ void cDPeco(
     indexC[i]=i;
 
   R_qsort_int_I(sortC, indexC, 1, t_samp);
-  
+
   nstar=0; 
   i=0;
 
@@ -364,7 +361,7 @@ void cDPeco(
     nj=0;       /* counter for a block of same values */
     
     /* get data for remixing */
-    while ((sortC[i]==j) && (i<t_samp)) {
+    while ((i < t_samp) && (sortC[i] == j)) {
       label[nj]=indexC[i];
 
       for (k=0; k<n_dim; k++)

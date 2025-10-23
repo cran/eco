@@ -348,7 +348,7 @@ void cDPecoX(
     nj=0; /* counter for a block of same values */
 
     /* get data for remixing */
-    while ((sortC[i]==j) && (i<t_samp)) {
+    while ((i<t_samp) && (sortC[i]==j)) {
       label[nj]=indexC[i];
       for (k=0; k<=n_dim; k++) {
 	Wstarmix[nj][k]=Wstar[label[nj]][k];
